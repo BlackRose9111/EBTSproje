@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,32 +21,58 @@ public class PlayerController : MonoBehaviour
     //Oyuncunun Hareket hýzý
     public float speed = 15f;
 
-    public float jumpRate = 2f;
+    public float jumpRate;
+    private float movementHorizontal;
+    private float movementVertical;
+
+    public string horizontalMotionType;
 
     // Start is called before the first frame update
     private void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
-        Debug.Log(rigid);
+        horizontalMotionType = GetHorizontalMotionType();
+    }
+
+    private string GetHorizontalMotionType()
+    {
+        if (playerTipi == PlayerTipi.aydýnlýk)
+        {
+            return "First";
+        }
+        else
+        {
+            return "Second";
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
+        movementHorizontal = Input.GetAxisRaw(horizontalMotionType);
     }
 
-    public void HorizontalMove(InputAction.CallbackContext ctx)
+    private void FixedUpdate()
     {
-        Debug.Log(ctx);
-    }
-
-    public void Jump(InputAction.CallbackContext ctx)
-    {
-        Debug.Log(ctx.performed);
-
-        if (ctx.performed)
+        if (MathF.Abs(movementHorizontal) == 1)
         {
-            rigid.AddForce(Vector2.up * jumpRate, ForceMode2D.Impulse);
+            Debug.Log(movementHorizontal);
+            rigid.AddForce(new Vector2(movementHorizontal * speed, 0f), ForceMode2D.Force);
         }
     }
+
+    //public void HorizontalMove(InputAction.CallbackContext ctx)
+    //{
+    //    Debug.Log(ctx);
+    //}
+
+    //public void Jump(InputAction.CallbackContext ctx)
+    //{
+    //    Debug.Log(ctx.performed);
+
+    //    if (ctx.performed)
+    //    {
+    //        rigid.AddForce(Vector2.up * jumpRate, ForceMode2D.Impulse);
+    //    }
+    //}
 }
