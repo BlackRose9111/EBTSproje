@@ -2,77 +2,82 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     /// <summary>
     /// Iki oyuncumuzun hangisi olduðunu birbirinden ayýrt etmek için enum oluþturdum. -Baran
     /// </summary>
-    public enum PlayerTipi
-    {
-        aydýnlýk,
-        karanlýk
-    }
-
-    public PlayerTipi playerTipi;
+    public bool playerTipi = true;
 
     private Rigidbody2D rigid;
 
     //Oyuncunun Hareket hýzý
-    public float speed = 15f;
+    public float speed;
 
+    private ControlScheme playerInput;
+
+    //Zýplama oraný
     public float jumpRate;
-    private float movementHorizontal;
-    private float movementVertical;
 
-    public string horizontalMotionType;
+    public bool OnGround = false;
 
     // Start is called before the first frame update
     private void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
-        horizontalMotionType = GetHorizontalMotionType();
+        playerInput = new ControlScheme();
+        GetMotionType();
     }
 
-    private string GetHorizontalMotionType()
+    /// <summary>
+    /// Hangi oyuncu kontrol sistemini kullanacaðýz
+    /// </summary>
+    private void GetMotionType()
     {
-        if (playerTipi == PlayerTipi.aydýnlýk)
+        Debug.Log(playerTipi);
+        if (playerTipi)
         {
-            return "First";
+            playerInput.Player2.Disable();
+            playerInput.Player1.Enable();
+            playerInput.Player1.Jump.performed += Jump;
         }
         else
         {
-            return "Second";
+            playerInput.Player1.Disable();
+            playerInput.Player2.Enable();
+            playerInput.Player2.JumpPlayer2.performed += Jump;
         }
     }
 
-    // Update is called once per frame
-    private void Update()
+    /// <summary>
+    /// yere temas etip etmediðimizi trigger olarak belirlenen bir collider ile belirliyoruz
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        movementHorizontal = Input.GetAxisRaw(horizontalMotionType);
+        OnGround = true;
     }
 
     private void FixedUpdate()
     {
-        if (MathF.Abs(movementHorizontal) == 1)
-        {
-            Debug.Log(movementHorizontal);
-            rigid.AddForce(new Vector2(movementHorizontal * speed, 0f), ForceMode2D.Force);
-        }
+        //sað sol hareket
+
+        float horizontalSpeed = (playerInput.Player1.Walk.ReadValue<float>() + playerInput.Player2.Walk.ReadValue<float>()) * speed;
+        rigid.velocity = new Vector2(horizontalSpeed, rigid.velocity.y);
     }
 
-    //public void HorizontalMove(InputAction.CallbackContext ctx)
-    //{
-    //    Debug.Log(ctx);
-    //}
-
-    //public void Jump(InputAction.CallbackContext ctx)
-    //{
-    //    Debug.Log(ctx.performed);
-
-    //    if (ctx.performed)
-    //    {
-    //        rigid.AddForce(Vector2.up * jumpRate, ForceMode2D.Impulse);
-    //    }
-    //}
+    /// <summary>
+    /// Zýplama haraketi için gerekli fonksiyon
+    /// </summary>
+    /// <param name="ctx"></param>
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if (OnGround)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, jumpRate);
+            OnGround = false;
+        }
+    }
 }
