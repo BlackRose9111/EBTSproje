@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     //Oyuncunun Hareket hýzý
     public float speed;
 
-    private ControlScheme playerInput;
+    public ControlScheme playerInput;
 
     //Zýplama oraný
     public float jumpRate;
@@ -28,13 +28,12 @@ public class PlayerController : MonoBehaviour
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         playerInput = new ControlScheme();
-        GetMotionType();
     }
 
     /// <summary>
     /// Hangi oyuncu kontrol sistemini kullanacaðýz
     /// </summary>
-    private void GetMotionType()
+    public void GetMotionType()
     {
         Debug.Log(playerTipi);
         if (playerTipi)
