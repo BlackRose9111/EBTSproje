@@ -468,6 +468,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7745236915125353670, guid: 4c37be27fe9922645a26707461ded654, type: 3}
+      propertyPath: jumpRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745236915125353670, guid: 4c37be27fe9922645a26707461ded654, type: 3}
       propertyPath: playerTipi
       value: 1
       objectReference: {fileID: 0}

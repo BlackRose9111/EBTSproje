@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         playerInput = new ControlScheme();
+        GetMotionType();
     }
 
     /// <summary>
@@ -62,7 +63,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //sað sol hareket
-
+        Debug.Log(playerInput.Player1.Walk.ReadValue<float>());
+        //Debug.Log(playerInput.Player2.Walk.ReadValue<float>());
         float horizontalSpeed = (playerInput.Player1.Walk.ReadValue<float>() + playerInput.Player2.Walk.ReadValue<float>()) * speed;
         rigid.velocity = new Vector2(horizontalSpeed, rigid.velocity.y);
     }
