@@ -10,5 +10,10 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        //example
+
+        Instantiate(playerPrefab, spawner1.transform.position, Quaternion.identity);
+
+        Destroy(player1);
     }
 }
