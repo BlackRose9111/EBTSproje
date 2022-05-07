@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     //Oyuncunun Hareket hýzý
     public float speed;
 
+    public int test;
+
     public ControlScheme playerInput;
 
     //Zýplama oraný
