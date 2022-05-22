@@ -62,7 +62,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""name"": ""1D Axis"",
                     ""id"": ""ae009e16-b604-44fe-868a-9363d4191524"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Walk"",
@@ -112,7 +112,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                     ""id"": ""68111724-a5c9-49dc-8ac5-d59512de2c97"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -120,7 +120,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""35f6d6aa-8f9b-42d0-98fd-2eb367aa16ee"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""path"": ""<Keyboard>/numpad8"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -142,7 +142,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""cc848368-bd98-498d-93b8-c06ad3aa0464"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/numpad4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -153,7 +153,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""26299fdd-3281-4097-ab33-2e6a35f252d8"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/numpad6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
