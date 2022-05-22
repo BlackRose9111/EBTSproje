@@ -7,20 +7,21 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     /// <summary>
-    /// Iki oyuncumuzun hangisi olduðunu birbirinden ayýrt etmek için enum oluþturdum. -Baran
+    /// Iki oyuncumuzun hangisi olduï¿½unu birbirinden ayï¿½rt etmek iï¿½in enum oluï¿½turdum. -Baran
     /// </summary>
-    public bool playerTipi = true;
+    public bool playerTipi;
+
 
     private Rigidbody2D rigid;
 
-    //Oyuncunun Hareket hýzý
+    //Oyuncunun Hareket hizi
     public float speed;
 
     public int test;
 
     public ControlScheme playerInput;
 
-    //Zýplama oraný
+    //Zï¿½plama oranï¿½
     public float jumpRate;
 
     public bool OnGround = false;
@@ -28,12 +29,16 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
         rigid = gameObject.GetComponent<Rigidbody2D>();
         playerInput = new ControlScheme();
+        GetMotionType();
+
+
     }
 
     /// <summary>
-    /// Hangi oyuncu kontrol sistemini kullanacaðýz
+    /// Hangi oyuncu kontrol sistemini kullanacaï¿½ï¿½z
     /// </summary>
     public void GetMotionType()
     {
@@ -53,24 +58,25 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// yere temas etip etmediðimizi trigger olarak belirlenen bir collider ile belirliyoruz
+    /// yere temas etip etmediï¿½imizi trigger olarak belirlenen bir collider ile belirliyoruz
     /// </summary>
     /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
     {
         OnGround = true;
+
     }
 
     private void FixedUpdate()
     {
-        //sað sol hareket
+        //saï¿½ sol hareket
 
         float horizontalSpeed = (playerInput.Player1.Walk.ReadValue<float>() + playerInput.Player2.Walk.ReadValue<float>()) * speed;
         rigid.velocity = new Vector2(horizontalSpeed, rigid.velocity.y);
     }
 
     /// <summary>
-    /// Zýplama haraketi için gerekli fonksiyon
+    /// Zï¿½plama haraketi iï¿½in gerekli fonksiyon
     /// </summary>
     /// <param name="ctx"></param>
     public void Jump(InputAction.CallbackContext ctx)
