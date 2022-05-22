@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288d6a3f2ae317944a065ac2a8e1e8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Respawn: 0
+  killTypes: 0100
 --- !u!1 &998698476
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +358,8 @@ GameObject:
   - component: {fileID: 998698477}
   - component: {fileID: 998698478}
   m_Layer: 0
-  m_Name: GameMaster
-  m_TagString: Untagged
+  m_Name: Game Manager
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14a2632259745b4abc82329b9677dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneCount: 0
 --- !u!1001 &1069944613
 PrefabInstance:
   m_ObjectHideFlags: 0

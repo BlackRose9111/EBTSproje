@@ -120,7 +120,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""35f6d6aa-8f9b-42d0-98fd-2eb367aa16ee"",
-                    ""path"": ""<Keyboard>/numpad8"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -142,7 +142,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""cc848368-bd98-498d-93b8-c06ad3aa0464"",
-                    ""path"": ""<Keyboard>/numpad4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -153,7 +153,7 @@ public partial class @ControlScheme : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""26299fdd-3281-4097-ab33-2e6a35f252d8"",
-                    ""path"": ""<Keyboard>/numpad6"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
